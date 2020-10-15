@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 import data
 
 # Generating the data
-train_validation = 1/3
+train_validation = 2/3
 
 ti_train = data.e2_ti[0:int(np.round(train_validation * len(data.e2_ti)))]
 te_train = data.e2_te[0:int(np.round(train_validation * len(data.e2_ti)))]
@@ -18,7 +18,7 @@ q_validation = data.e2_q[int(np.round(train_validation * len(data.e2_ti))):len(d
 merged_array = np.stack([ti_train, te_train], axis=1)
 merged_array1 = np.stack([ti_validation, te_validation], axis=1)
 
-filepath = './saved_model_e2_1_3'
+filepath = './saved_model_e2_2_3_1l'
 model = load_model(filepath, compile=True)
 
 predictions = model.predict(merged_array)

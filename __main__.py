@@ -23,17 +23,14 @@ target_shape = q_train.shape
 model = Sequential()
 
 model.add(layers.Dense(3, input_dim=2, activation='relu'))
-model.add(layers.Dense(6, activation='relu'))
-model.add(layers.Dense(6, activation='relu'))
-model.add(layers.Dense(4, activation='relu'))
-model.add(layers.Dense(1))
+model.add(layers.Dense(1, activation='linear'))
 
-model.compile(loss='mse', optimizer='nadam')
+model.compile(loss='mse', optimizer='adam')
 
-model.fit(merged_array, q_train, epochs=15000)
+model.fit(merged_array, q_train, epochs=2000)
 
 model.summary()
 model.get_config()
 
-filepath = './saved_model_e2_1_4'
+filepath = './saved_model_e2_1_4_1l3'  # ANN model 1_4, 1_2 or 2_3
 save_model(model, filepath)
